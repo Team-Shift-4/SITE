@@ -1,7 +1,7 @@
 <template>
     <div>
         Portfolio
-        <Flicking :options="{ align: 'prev', circular: true }" @move-end="onMoveEnd">
+        <Flicking :options="{ align: 'prev', circular: true }" @move-end="onMoveEnd" :plugins="plugins">
             <div v-for="(member, i) in members" :index="i" :key="i">
                 <div class="card"><span class="name">{{ member.name }}</span></div>
             </div>
@@ -11,6 +11,7 @@
   
 <script>
 import { Flicking } from '@egjs/vue-flicking'
+import { AutoPlay, Fade } from '@egjs/flicking-plugins'
 export default {
     name: 'PortfolioPage',
     data: function(){
@@ -30,7 +31,8 @@ export default {
                 {name: 'Jinho Kim', color: ''},
                 {name: 'Wonkyu Yoo', color: ''},
                 {name: 'Seonmi Kim', color: ''},
-                {name: 'Jinhyeok Ryu', color: ''},]
+                {name: 'Jinhyeok Ryu', color: ''},],
+            plugins: [new AutoPlay({duration:1000, direction:"NEXT", stopOnHover:true}), new Fade()]
         }
     },
     components: {
