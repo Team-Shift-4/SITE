@@ -1162,7 +1162,12 @@
   "resolved" "https://registry.npmjs.org/@egjs/component/-/component-3.0.4.tgz"
   "version" "3.0.4"
 
-"@egjs/flicking@~4.10.6":
+"@egjs/flicking-plugins@^4.7.0":
+  "integrity" "sha512-BbFDKanOPVLG042fRNC0BSNa/28mohscT0hQOruorfplv/4Qm3jQ+Ldk2iytsdN631tF199NW6nkkizEmRMRRA=="
+  "resolved" "https://registry.npmjs.org/@egjs/flicking-plugins/-/flicking-plugins-4.7.0.tgz"
+  "version" "4.7.0"
+
+"@egjs/flicking@^4.1.0", "@egjs/flicking@~4.10.6":
   "integrity" "sha512-DmzkGroItTC3U+H7t7AWlP+0ELT6d6cOlr7rQk+8IzmPtVonJT8/L4Roq3JCBAyCIsMwkpVoLoikOr547QLLng=="
   "resolved" "https://registry.npmjs.org/@egjs/flicking/-/flicking-4.10.6.tgz"
   "version" "4.10.6"
