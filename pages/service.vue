@@ -1,26 +1,21 @@
 <template>
     <div>
-        <!-- Service -->
-        <carousel-3d :controls-visible="true" :controls-width="20" :controls-height="60"
-                    :controls-prev-html="'&#10092;'" :controls-next-html="'&#10093;'"
-                    :width="210" :height="297" :border="0"
-                    :autoplay="true" :autoplayHoverPause="true">
-            <slide v-for="(service, i) in services" :index="i" :key="i">
-                <div class="cover">
-                    {{ service.name }}
-                    <img :src="`${service.image}`">
-                </div>
-            </slide>
-        </carousel-3d>
+        <Flicking :options="{ align: 'center', circular: true }" @move-end="onMoveEnd" :plugins="plugins">
+            <div v-for="(service, i) in services" :index="i" :key="i">
+                <div class="cover"><span class="name">{{ service.name }}</span></div>
+            </div>
+        </Flicking>
     </div>
 </template>
   
 <script>
-import { Carousel3d, Slide } from 'vue-carousel-3d'
+import { Flicking } from '@egjs/vue-flicking'
+import { AutoPlay, Fade, Perspective } from '@egjs/flicking-plugins'
 export default {
     name: 'ServicePage',
     data: function() {
         return {
+            plugins: [new AutoPlay({duration:5000, direction:"NEXT", stopOnHover:true}), new Fade(), new Perspective({ rotate:0.5 })],
             services: [
                 {
                     name: 'CODE-SITE',
@@ -57,8 +52,7 @@ export default {
         }
     },
     components: {
-        Carousel3d,
-        Slide
+        Flicking: Flicking
     }
 }
 </script>
@@ -70,14 +64,15 @@ export default {
 </style>
 <style scoped>
 .cover {
-    text-indent : 0;
-    text-align : center;
-    margin : 0;
-    padding : 0;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.3) 3px, rgba(255,255,255,0.5) 5px, rgba(255, 255, 255, 0.25) 7px, rgba(255, 255, 255, 0.25) 10px, transparent 12px, transparent 16px, rgba(255, 255, 255, 0.25) 20px, transparent 22px), url('/images/test.png');
+    position: relative;
+    width: 420px;
+    height: 594px;
+    margin-left: 30px;
+    text-align: center;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.3) 3px, rgba(255,255,255,0.5) 5px, rgba(255, 255, 255, 0.25) 7px, rgba(255, 255, 255, 0.25) 10px, transparent 12px, transparent 16px, rgba(255, 255, 255, 0.25) 20px, transparent 22px);
     box-shadow: 0 0 5px -1px rgba(0, 0, 0, 1), inset -1px 1px 2px rgba(255, 255, 255, 0.5);
     border-radius: 5px;
-    width: 100%;
-    height: 100%;
+
+    background-color: gray;
 }
 </style>
