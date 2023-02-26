@@ -185,5 +185,16 @@ footer {
 <script>
 export default {
   name: "IndexPage",
+  methods: {
+    handleScroll() {
+      console.log(window.scrollY);
+    }
+  },
+  created() {
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  destroyed() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
 };
 </script>
