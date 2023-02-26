@@ -1,12 +1,18 @@
 <template>
   <div>
-    <div class="logo_big">
+	<div class="jumbotron">
+    </div>
+	<div class="content_index">
+
+	</div>
+    <!-- <div class="logo_big">
       <div class="logo_stack" stype="--stacks: 3;">
         <span style="--index: 0;">shift 4</span>
         <span style="--index: 1;">shift 4</span>
         <span style="--index: 2;">shift 4</span>
       </div>
-    </div>
+    </div> -->
+	
   </div>
 </template>
 
@@ -26,6 +32,18 @@ export default {
 @font-face {
   font-family: 'barcode';
   src: url('@/static/LibreBarcode39Text-Regular.ttf');
+}
+.jumbotron {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    background-color: #525252;
+    margin-bottom: 20px;
+}
+.content_index {
+	position: relative;
+	width: 100%;
+	height: 200vh;
 }
 .logo_big{
   display: flex;
