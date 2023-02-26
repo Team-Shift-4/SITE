@@ -26,7 +26,7 @@
         </div>
       </div>
     </header>
-  <div>
+  <div class="content-wrapper">
     <nuxt />
   </div>
   
@@ -64,6 +64,10 @@ a{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+footer {
+  position: relative;
+  top: -40px;
+}
   .gnb {
   position: relative;
   top: 0px;
@@ -72,11 +76,25 @@ a{
   height: 80px;
   margin-bottom: 10px;
   box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.3);
+  z-index: 2;
 }
 .logo{
+  position: absolute;
+  width: 100%;
+  top: 17px;
   font-size: 50px;
   font-family: 'barcode';
 }
+
+.content-wrapper {
+  position: relative;
+  top: -10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  z-index: 1;
+  background: #F5F5F5;
+}
+
 .gnb-wrapper {
   position: absolute;
   width: 1100px;
@@ -139,6 +157,7 @@ a{
   width: 200px;
   height: 80px;
   padding: 10px;
+  text-align: center;
 }
 
 .fnb-logo img {
@@ -159,6 +178,9 @@ a{
   line-height: 21px;
 }
 
+@media scre {
+  
+}
 </style>
 <script>
 export default {
