@@ -1,11 +1,10 @@
 <template>
     <div>
         <div class="jumbotron">
-           123
         </div>
         <Flicking :options="{ align: 'prev', circular: true }" @move-end="onMoveEnd" :plugins="plugins">
             <div v-for="(member, i) in members" :index="i" :key="i">
-                <div class="card"><span class="name">{{ member.name }}</span></div>
+                <div class="card"><span class="name">{{ member.name  }}</span></div>
             </div>
         </Flicking>
     </div>
