@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <header>
-      <div class="gnb">
+      <div class="gnb" id="gnb">
         <div class="gnb-wrapper">
           <div class="gnb-logo">
             <span class="logo"><a href="/">shift 4</a></span>
@@ -26,36 +26,65 @@
         </div>
       </div>
     </header>
-  <div class="content-wrapper">
-    <nuxt />
-  </div>
-  
-  <footer>
-    <div class="fnb">
-      <div class="fnb-wrapper">
-        <div class="fnb-logo"><span class="logo">shift 4</span></div>
-        <div class="fnb-info">
-          Copyright 2023 SHIFT 4 All Rights Reserved.<br/>
-          ShifT 4 Team leader : Jungin Kim ｜ Email : 99JunginKim@gmail.com<br/>
-          TEL : 010-7008-0801｜ ADDRESS : 대구광역시 동구 신암로 16길 16
+    <div class="content-wrapper">
+      <nuxt />
+    </div>
+
+    <footer>
+      <div class="fnb">
+        <div class="fnb-wrapper">
+          <div class="fnb-logo"><span class="logo">shift 4</span></div>
+          <div class="fnb-info">
+            Copyright 2023 SHIFT 4 All Rights Reserved.<br />
+            ShifT 4 Team leader : Jungin Kim ｜ Email : 99JunginKim@gmail.com<br />
+            TEL : 010-7008-0801｜ ADDRESS : 대구광역시 동구 신암로 16길 16
+          </div>
         </div>
       </div>
-    </div>
-  </footer>
-</div>
+    </footer>
+  </div>
 </template>
+
+<script>
+export default {
+  name: "IndexPage",
+  methods: {
+    handleScroll() {
+      // var gnb = document.querySelector("#gnb");
+      if (window.scrollY > 80) {
+        console.log("yeah");
+        document.getElementById('gnb').classList.add('popup');
+        document.getElementById('gnb').classList.remove('gnb');
+      } else {
+        console.log("nope");
+        document.getElementById('gnb').classList.add('gnb');
+        document.getElementById('gnb').classList.remove('popup');
+      }
+    },
+  },
+  created() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  destroyed() {
+    window.removeEventListener("scroll", this.handleScroll);
+  },
+};
+</script>
 
 <style>
 @import url("https://webfontworld.github.io/NexonLv1Gothic/NexonLv1Gothic.css");
 @font-face {
-  font-family: 'barcode';
-  src: url('@/static/LibreBarcode39Text-Regular.ttf');
+  font-family: "barcode";
+  src: url("@/static/LibreBarcode39Text-Regular.ttf");
 }
 
-*{margin: 0; border: 0;}
-a{
-    text-decoration: none;
-    color: black;
+* {
+  margin: 0;
+  border: 0;
+}
+a {
+  text-decoration: none;
+  color: black;
 }
 .app {
   font-family: "NexonLv1Gothic", -apple-system, BlinkMacSystemFont,
@@ -68,31 +97,45 @@ footer {
   position: relative;
   top: -40px;
 }
-  .gnb {
-  position: relative;
-  top: 0px;
-  left: 0px;
+#gnb {
   width: 100vw;
   height: 80px;
-  margin-bottom: 10px;
+  background-color: #ffffff;
   box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.3);
   z-index: 2;
+  transition: 0.5s all ease;
 }
-.logo{
+
+.popup {
+  position: fixed;
+  top: 0px;
+  animation-name: pop;
+  animation-duration: 1.75s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.gnb {
+  position: absolute;
+  top: 0px;
+  transition: 0.5s all ease;
+}
+
+.logo {
   position: absolute;
   width: 100%;
   top: 17px;
   font-size: 50px;
-  font-family: 'barcode';
+  font-family: "barcode";
 }
 
 .content-wrapper {
   position: relative;
-  top: -10px;
+  top: 80px;
   padding-top: 20px;
   padding-bottom: 20px;
   z-index: 1;
-  background: #F5F5F5;
+  background: #f5f5f5;
 }
 
 .gnb-wrapper {
@@ -139,6 +182,7 @@ footer {
   position: relative;
   width: 100vw;
   height: 160px;
+  top: 80px;
 }
 
 .fnb-wrapper {
@@ -178,23 +222,12 @@ footer {
   line-height: 21px;
 }
 
-@media scre {
-  
+@keyframes pop {
+  0% {
+    top: -80px;
+  }
+  100% {
+    top: 0px;
+  }
 }
 </style>
-<script>
-export default {
-  name: "IndexPage",
-  methods: {
-    handleScroll() {
-      console.log(window.scrollY);
-    }
-  },
-  created() {
-    window.addEventListener('scroll', this.handleScroll);
-  },
-  destroyed() {
-    window.removeEventListener('scroll', this.handleScroll);
-  }
-};
-</script>
